@@ -1,0 +1,173 @@
+/* Base Styles */
+body {
+    font-family: 'Georgia', serif;
+    background: #FFFFFF;
+    color: #5A3E8C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.spotify-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.letter {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    perspective: 1000px;
+    margin: 20px auto;
+}
+
+.letter-front,
+.letter-inside {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #5A3E8C;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.letter-front {
+    background: #E6E1F5;
+    color: #5A3E8C;
+}
+
+.letter-inside {
+    background: #C5B6E2;
+    color: #FFF;
+    overflow-y: auto;
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.letter-inside p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+.letter {
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+/* Button Styles */
+button {
+    background-color: #5A3E8C;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 20px; /* Add spacing between the letter and button */
+    position: relative;
+    z-index: 2; /* Ensure the button is on top of other elements */
+}
+
+button:hover {
+    background-color: #3E2875;
+    transform: translateY(-2px);
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px; /* Adjust spacing for better layout */
+}
+
+
+/* Animation Styles */
+.letter.open {
+    transform: rotateY(180deg);
+}
+
+
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FF69B4;
+    opacity: 0.8;
+    transform: rotate(45deg);
+    animation: floatUp 5s linear infinite;
+    border-radius: 5px;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FF69B4;
+    border-radius: 50%;
+    top: -10px;
+    left: 5px;
+}
+
+.heart::after {
+    top: 5px;
+    left: -10px;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-20px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Customize the scrollbar for the letter */
+.letter-inside {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #5A3E8C transparent; /* For Firefox */
+}
+
+/* For WebKit browsers (Chrome, Edge, Safari) */
+.letter-inside::-webkit-scrollbar {
+    width: 1px; /* Slim scrollbar width */
+}
+
+.letter-inside::-webkit-scrollbar-thumb {
+    background-color: #5A3E8C; /* Aesthetic purple color */
+    border-radius: 10px; /* Rounded corners for smooth appearance */
+}
+
+.letter-inside::-webkit-scrollbar-track {
+    background: transparent; /* Invisible track */
+}
+
